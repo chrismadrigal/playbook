@@ -260,6 +260,57 @@ export default {
         }
     }
 
+    // Playbook list
+    .playbook-list {
+        .dribbble-shots {
+            text-align: center;
+            padding: 0 15px;
+            margin: 0;
+
+            @include breakpoint($tablet) {
+                display: flex;
+                flex-wrap: wrap;
+                max-width: 890px;
+                margin: auto;
+            }
+
+            @include breakpoint($desktop) {
+                max-width: 1320px;
+            }
+
+            @include breakpoint($widescreen) {
+                max-width: 1750px;
+            }
+
+            li {
+                margin-bottom: 30px;
+
+                @include breakpoint($tablet) {
+                    width: 50%;
+                    padding: 0 15px;
+                }
+
+                @include breakpoint($desktop) {
+                    width: 33.33%;
+                }
+
+                @include breakpoint($widescreen) {
+                    width: 25%;
+                }
+
+                a {
+                    :hover {
+                        opacity: 0.9;
+                    }
+                }
+
+                .dribbble-shot {
+                    max-width: 400px;
+                }
+            }
+        }
+    }
+
     // Utility Classes
     .title {
         font-weight: 500;
