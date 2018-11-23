@@ -129,7 +129,7 @@ export default {
 </script>
 
 <template>
-    <transition name="fade">
+    <transition name="fade-in">
         <section v-if="show" class="playbook-overlay" @click="OnClickOverlay">
             <a href="#" class="close-overlay" aria-label="Close" title="Close" @click.prevent="triggerClose">
                 <span class="icon-close">Close</span>
