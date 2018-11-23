@@ -20,6 +20,7 @@ export default {
             page: 1,
             maxPage: 3,
             isLoading: true,
+            selectedShotIndex: 0,
             showOverlay: false,
         };
     },
@@ -61,6 +62,15 @@ export default {
             const pageHeight = document.documentElement.scrollHeight;
             const bottomOfPage = visible + scrollY + threshold >= pageHeight;
             return bottomOfPage || pageHeight < visible;
+        },
+
+        // Set the selected shot index and open overlay.
+        onSelectedShot(shotId) {
+            const selectedIndex = this.shots.findIndex(shot => shot.id === shotId);
+
+            if (selectedIndex !== -1) {
+                this.selectedShotIndex = selectedIndex;
+            }
         },
     },
 
