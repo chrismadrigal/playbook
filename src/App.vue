@@ -12,6 +12,72 @@ export default {
         PlaybookList,
         PlaybookOverlay,
     },
+
+    data() {
+        return {
+            user: {},
+            shots: [],
+            page: 1,
+            maxPage: 3,
+            isLoading: true,
+            showOverlay: false,
+        };
+    },
+
+    methods: {
+        // Get playbook shots based on the current page and push to our local prop.
+        getShots() {
+            if (this.page <= this.maxPage) {
+                API.getShots(this.page).then((response) => {
+                    this.shots.push(...Object.values(response.data));
+                    this.isLoading = false;
+                });
+            } else {
+                // Do some cleanup after we fetch the max amount of pages
+                this.isLoading = false;
+                window.removeEventListener('scroll', this.onScroll);
+            }
+        },
+
+        // Handle page scrolling, check if we reached the bottom and fetch more results.
+        onScroll() {
+            if (this.pageReachedBottom() && !this.isLoading) {
+                // Show loading text while we are fetching results.
+                this.isLoading = true;
+
+                // Increment page before we fetch results.
+                this.page++;
+
+                // Fetch the next set of results.
+                this.getShots();
+            }
+        },
+
+        // Calculate if user scroll to the bottom of the page with a 200px threshold.
+        pageReachedBottom() {
+            const scrollY = window.scrollY;
+            const threshold = 200;
+            const visible = document.documentElement.clientHeight;
+            const pageHeight = document.documentElement.scrollHeight;
+            const bottomOfPage = visible + scrollY + threshold >= pageHeight;
+            return bottomOfPage || pageHeight < visible;
+        },
+    },
+
+    created() {
+        // Fetch user profile information
+        API.getProfileInfo().then((response) => {
+            this.user = response.data;
+        });
+
+        // Fetch initial set of shots.
+        this.getShots();
+    },
+
+    mounted() {
+        // Add event listener for window scrolling to lazy-load more content.
+        window.addEventListener('scroll', this.onScroll);
+    },
 };
 </script>
 
