@@ -9,14 +9,19 @@ export default {
     },
 
     props: {
+        // A flag for showing and hidding the overlay
         show: {
             type: Boolean,
             required: true,
         },
+
+        // An array for shots returned by the JSON api.
         shots: {
             type: Array,
             required: true,
         },
+
+        // The selectedIndex used for updating the selected shot.
         selectedIndex: {
             type: Number,
             required: true,
@@ -48,6 +53,7 @@ export default {
     },
 
     watch: {
+        // Disable/Enable body scroll when the overlay opens/close.
         show(newVal, oldVal) {
             if (newVal && !oldVal) {
                 document.body.classList.add('disable-scroll');
@@ -58,6 +64,7 @@ export default {
             }
         },
 
+        // Watch for changes on the selected index prop and update local prop.
         selectedIndex(newVal) {
             this.activeIndex = newVal;
         },
@@ -97,11 +104,11 @@ export default {
                 case 27:
                     this.triggerClose();
                     break;
-                // Left Aarow key
+                // Left arrow key
                 case 37:
                     this.triggerPrev();
                     break;
-                // Right Aarow key
+                // Right arrow key
                 case 39:
                     this.triggerNext();
                     break;
