@@ -179,4 +179,93 @@ export default {
             margin-bottom: 0;
         }
     }
+
+    #app {
+        margin-bottom: 60px;
+    }
+
+    // User profile header
+    .user-profile {
+        text-align: center;
+        padding: 20px 30px;
+        max-width: 680px;
+        margin: 0 auto 30px;
+        border-bottom: 1px solid $greyLighter;
+
+        @include breakpoint($desktop) {
+            max-width: 890px;
+        }
+
+        @include breakpoint($desktopLg) {
+            max-width: 1350px;
+        }
+
+        .avatar {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            overflow: hidden;
+            border-radius: 50%;
+            background: $greyLighter;
+            margin-bottom: 12px;
+
+            @include breakpoint($desktop) {
+                width: 80px;
+                height: 80px;
+            }
+
+            img {
+                width: 100%;
+                height: auto;
+            }
+        }
+
+        h1 {
+            font-size: 20px;
+            margin-bottom: 5px;
+
+            @include breakpoint($tablet) {
+                font-size: 26px;
+            }
+        }
+
+        h2 {
+            font-size: 20px;
+            font-weight: normal;
+            line-height: 1.4;
+            color: rgba(0, 0, 0, 0.51);
+            max-width: 1100px;
+            margin: 0 auto 15px;
+            padding: 0 30px;
+
+            @include breakpoint($mobileSm) {
+                font-size: 14px;
+            }
+        }
+
+        .profile-social-links {
+            li {
+                display: inline-block;
+                padding: 0 12px;
+
+                a {
+                    opacity: 0.37;
+                    transition: opacity 0.2s ease;
+
+                    &:hover {
+                        opacity: 0.72;
+                    }
+                }
+            }
+        }
+    }
+
+    // Utility Classes
+    .title {
+        font-weight: 500;
+        letter-spacing: .05em;
+        text-transform: uppercase;
+        line-height: 1.3em;
+        color: rgba(0, 0, 0, 0.72);
+    }
 </style>
