@@ -268,4 +268,32 @@ export default {
         line-height: 1.3em;
         color: rgba(0, 0, 0, 0.72);
     }
+
+    .dribbble-shot {
+        display: block;
+        width: 100%;
+        position: relative;
+        font-size: 0;
+        background: $greyLighter;
+        box-shadow: 0 0 1px rgba(0, 0, 0, 0.2);
+        border-radius: 2px;
+        overflow: hidden;
+        @include aspectRatio(4, 3);
+
+        img {
+
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    }
+
+    .loading-text {
+        font-size: 16px;
+        font-weight: normal;
+        color: $grey;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        text-align: center;
+    }
 </style>
