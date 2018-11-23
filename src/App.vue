@@ -83,8 +83,10 @@ export default {
 
 <template>
     <main id="app">
-        <playbook-header></playbook-header>
-        <playbook-list></playbook-list>
+        <playbook-header :user="user">
+        </playbook-header>
+        <playbook-list :shots="shots" @shotSelected="onSelectedShot">
+        </playbook-list>
         <div v-if="isLoading" class="loading-text">Loading Shots...</div>
         <playbook-overlay></playbook-overlay>
     </main>
