@@ -296,4 +296,66 @@ export default {
         letter-spacing: 0.05em;
         text-align: center;
     }
+
+    // Icons Helpers.
+    // I'm hot linking to Dribbble's CDN images. Not the approached I will use for a producting site.
+    [class^='icon-'] {
+        display: inline-block;
+        background-repeat: no-repeat;
+        background-size: 100%;
+        text-indent: -9999px;
+    }
+
+    .icon-close {
+        width:  20px;
+        height: 20px;
+        background-image: url('http://cdn.dribbble.com/assets/playbook/icon-x-cae0eb46b1cce1e820ff95240a38f0acb30bee79f77d839d7e4fcc2994245af6.png');
+    }
+
+    .icon-prev,
+    .icon-next {
+        width:  15px;
+        height: 28px;
+        background-image: url('http://cdn.dribbble.com/assets/playbook/icon-prev-68247b9494c53bf35f808c2148618cec4a3a6208b689d9faa33df308079505dd.png');
+    }
+
+    .icon-next {
+        transform: rotate(180deg);
+    }
+
+    .social-icon {
+        width:  20px;
+        height: 20px;
+    }
+
+    .icon-web {
+        background-image: url('http://cdn.dribbble.com/assets/profile/icon-elsewhere-website-241749d5da6c64b1e51b820ab5ebc0d52274ba1da0c34cff6077e208e6871ea0.png');
+    }
+
+    .icon-twitter {
+        background-image: url('http://cdn.dribbble.com/assets/profile/icon-elsewhere-twitter-740b8ccb2aebe896ed737e6813f3d926bcd3b32ad01bca4f2d72465e50be3584.png');
+    }
+
+    .icon-instagram {
+        background-image: url('http://cdn.dribbble.com/assets/profile/icon-elsewhere-instagram-ef258bfd39ec49d8090f23b27769433f922cd034d9dfe7640b7c8a17f2b41416.png');
+    }
+
+    .icon-facebook {
+        background-image: url('https://cdn.dribbble.com/assets/profile/icon-elsewhere-facebook-1a26760722306c219c66b5743bc0febc6e2880bb4e4001770801f50c38f5ea06.png');
+    }
+
+    .icon-vimeo {
+        background-image: url('http://cdn.dribbble.com/assets/profile/icon-elsewhere-vimeo-c79ee9e9a8a71e32fc1124efa685ad1cf59a13b5003ea4c5efd91a2cd0118efc.png');
+    }
+
+    // Animations
+    @keyframes fade-in {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
 </style>
