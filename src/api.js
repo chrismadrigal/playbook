@@ -10,7 +10,7 @@ export const getProfileInfo = () => axios.get(
 );
 
 /**
- * This endpoint is used for fetching the playbook shots besed on a page.
+ * This endpoint is used for fetching the playbook shots based on a page.
  *
  * @param  {Number} page      The page number to append to the endpoint url.
  * @return {Response Object}  The response can be hooked from a .then or .catch method on the api call
