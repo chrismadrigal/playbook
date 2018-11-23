@@ -70,6 +70,7 @@ export default {
 
             if (selectedIndex !== -1) {
                 this.selectedShotIndex = selectedIndex;
+                this.showOverlay = true;
             }
         },
     },
@@ -98,7 +99,12 @@ export default {
         <playbook-list :shots="shots" @shotSelected="onSelectedShot">
         </playbook-list>
         <div v-if="isLoading" class="loading-text">Loading Shots...</div>
-        <playbook-overlay></playbook-overlay>
+        <playbook-overlay
+            :show="showOverlay"
+            :shots="shots"
+            :selected-index="selectedShotIndex"
+            @close="showOverlay = false">
+        </playbook-overlay>
     </main>
 </template>
 
@@ -188,6 +194,12 @@ export default {
         &:last-child {
             margin-bottom: 0;
         }
+    }
+
+    // Layout styles
+    body.disable-scroll {
+        overflow-x: hidden;
+        overflow-y: hidden;
     }
 
     #app {
@@ -321,6 +333,144 @@ export default {
         }
     }
 
+    // Playbook Overlay
+    .playbook-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        padding: 80px 0;
+        background: $overlayBg;
+        z-index: 9999;
+        overflow-x: hidden;
+        overflow-y: scroll;
+        -webkit-overflow-scrolling: touch;
+
+        .close-overlay {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            opacity: 0.3;
+
+            &:hover {
+                opacity: 0.5;
+            }
+        }
+
+        .playbook-content {
+            position: relative;
+            max-width: 400px;
+            margin: auto;
+
+            @include breakpoint($tablet) {
+                padding: 0 20px;
+                max-width: 840px;
+            }
+
+            @include breakpoint($desktop) {
+                padding: 0 20px;
+                max-width: 880px;
+            }
+        }
+
+        .content-top {
+            @include breakpoint($tablet) {
+                display: flex;
+            }
+
+            .content-shot {
+                margin-bottom: 15px;
+
+                @include breakpoint($tablet) {
+                    width: 400px;
+                    min-width: 400px;
+                    flex-grow: 0;
+                    margin-bottom: 0;
+                }
+            }
+
+            .content-info {
+                padding: 0 15px;
+
+                @include breakpoint($tablet) {
+                    padding-left: 20px;
+                    padding-right: 0;
+                    flex-grow: 1;
+                }
+
+                @include breakpoint($desktop) {
+                    padding-left: 40px;
+                }
+
+                h2 {
+                    font-size: 22px;
+                }
+
+                .description {
+                    padding: 20px 0;
+
+                    a {
+                        color: $greyDark;
+                        text-decoration: underline;
+
+                        &:hover {
+                            color: $grey;
+                        }
+                    }
+                }
+            }
+        }
+
+        .content-bottom {
+            margin-top: 30px;
+
+            @include breakpoint($tablet) {
+                margin-top: 50px;
+            }
+
+            .playbook-attachments {
+                li {
+                    margin-bottom: 20px;
+
+                    @include breakpoint($tablet) {
+                        margin-bottom: 40px;
+                    }
+
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+                }
+            }
+        }
+
+        .playbook-nav {
+            .prev,
+            .next {
+                position: absolute;
+                top: 120px;
+            }
+
+            .prev {
+                left: -60px;
+            }
+
+            .next {
+                right: -60px;
+            }
+
+            a {
+                display: inline-block;
+                padding: 16px 20px;
+                opacity: 0.3;
+
+                &:hover {
+                    opacity: 0.5;
+                }
+            }
+        }
+    }
+
     // Utility Classes
     .title {
         font-weight: 500;
@@ -328,6 +478,30 @@ export default {
         text-transform: uppercase;
         line-height: 1.3em;
         color: rgba(0, 0, 0, 0.72);
+    }
+
+    .button {
+        display: inline-block;
+        font-size: 13px;
+        padding: 8px 12px;
+        font-weight: normal;
+        text-transform: uppercase;
+        text-align: center;
+        letter-spacing: .05em;
+        color: $grey;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        border-radius: 4px;
+        transition: all 0.2s ease;
+        width: 100%;
+
+        @include breakpoint($tablet) {
+            width: auto;
+        }
+
+        &:hover {
+            color: $greyDark;
+            border: 1px solid rgba(0, 0, 0, 0.3);
+        }
     }
 
     .dribbble-shot {
@@ -418,5 +592,13 @@ export default {
         to {
             opacity: 1;
         }
+    }
+
+    .fade-in-enter-active {
+        animation: fade-in 0.3s;
+    }
+
+    .fade-in-leave-active {
+        animation: fade-in 0.3s reverse;
     }
 </style>
