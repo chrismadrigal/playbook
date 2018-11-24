@@ -113,10 +113,13 @@ export default {
     $greyLighter: #ededed;
     $greyLight: #cccccc;
     $grey: #a1a1a1;
-    $greyDark: #474747;
+    $greyDark: #7d7d7d;
+    $greyDarker: #474747;
     $pink: #ea518a;
     $white: #fff;
     $overlayBg: rgba(255, 255, 255, 0.98);
+    $borderLight:  rgba(0, 0, 0, 0.3);
+    $borderLighter: rgba(0, 0, 0, 0.2);
 
     // Media Query Breakpoints
     $mobileSm: 'screen and (max-width: 460px)';
@@ -183,7 +186,7 @@ export default {
         color: $grey;
 
         &:hover {
-            color: $greyDark;
+            color: $greyDarker;
         }
     }
 
@@ -255,7 +258,7 @@ export default {
             font-size: 20px;
             font-weight: normal;
             line-height: 1.4;
-            color: rgba(0, 0, 0, 0.51);
+            color: $greyDark;
             max-width: 1100px;
             margin: 0 auto 15px;
             padding: 0 30px;
@@ -411,7 +414,7 @@ export default {
                     padding: 20px 0;
 
                     a {
-                        color: $greyDark;
+                        color: $greyDarker;
                         text-decoration: underline;
 
                         &:hover {
@@ -477,7 +480,7 @@ export default {
         letter-spacing: .05em;
         text-transform: uppercase;
         line-height: 1.3em;
-        color: rgba(0, 0, 0, 0.72);
+        color: $greyDarker;
     }
 
     .button {
@@ -489,7 +492,7 @@ export default {
         text-align: center;
         letter-spacing: .05em;
         color: $grey;
-        border: 1px solid rgba(0, 0, 0, 0.2);
+        border: 1px solid $borderLighter;
         border-radius: 4px;
         transition: all 0.2s ease;
         width: 100%;
@@ -499,8 +502,8 @@ export default {
         }
 
         &:hover {
-            color: $greyDark;
-            border: 1px solid rgba(0, 0, 0, 0.3);
+            color: $greyDarker;
+            border: 1px solid $borderLight;
         }
     }
 
@@ -510,7 +513,7 @@ export default {
         position: relative;
         font-size: 0;
         background: $greyLighter;
-        box-shadow: 0 0 1px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 0 1px $borderLighter;
         border-radius: 2px;
         overflow: hidden;
         @include aspectRatio(4, 3);
