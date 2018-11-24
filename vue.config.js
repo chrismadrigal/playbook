@@ -3,4 +3,5 @@ module.exports = {
     parallel: false,
     outputDir: 'build',
     filenameHashing: false,
+    baseUrl: './',
 };
